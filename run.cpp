@@ -10,5 +10,7 @@ int main()
     for(int i:result){
         cout<<i<<endl;
     }
+
     return 0;
+    //
 }

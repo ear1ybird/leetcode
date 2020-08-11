@@ -1,12 +1,14 @@
-#include "2. Add Two Numbers.h"
+#include "88. Merge Sorted Array.h"
 #include <iostream>
 
 int main()
 {
     Solution solution;
 
-    ListNode* l1=(ListNode*)malloc(sizeof(ListNode));
-    l1->next=NULL;
-    l1->val=2;
-    l1->next=(ListNode*)malloc(sizeof(ListNode));
+    vector<int> nums1={1,2,3,0,0,0};
+    int m=3;
+    vector<int> nums2={2,5,6};
+    int n=3;
+    
+    solution.merge(nums1,m,nums2,n);
 }

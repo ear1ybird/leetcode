@@ -1,16 +1,12 @@
-#include "1.Two Sum.h"
+#include "2. Add Two Numbers.h"
 #include <iostream>
 
 int main()
 {
     Solution solution;
-    vector<int> nums={4, 7, 2, 15};
-    vector<int> result = solution.twoSum(nums, 9);
-    
-    for(int i:result){
-        cout<<i<<endl;
-    }
 
-    return 0;
-    //
+    ListNode* l1=(ListNode*)malloc(sizeof(ListNode));
+    l1->next=NULL;
+    l1->val=2;
+    l1->next=(ListNode*)malloc(sizeof(ListNode));
 }

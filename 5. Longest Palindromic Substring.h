@@ -1,9 +1,10 @@
 /*************************************************************************
     Copyright:ear1ybird
     Author:ear1ybird
-    Date:2020-08-11
-    Description:给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出
-    和为目标值的那 两个 整数，并返回他们的数组下标。
+    Date:2020-08-12
+    Description:给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大
+    长度为 1000。
+    Agorithm:中心扩散。
 **************************************************************************/
 
 #include <iostream>
@@ -11,51 +12,38 @@
 #include <string>
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-    string longestPalindrome(string s)
-    {
-        vector<string> subString;
-        if (s.length() < 2)
-        {
-            return s;
-        }
-
-        for (int i = 0; i < s.length() - 1; i++)
-        {
-            for (int j = 1; j <= s.length()-i; j++)
-            {
-                subString.push_back(s.substr(i, j));
-            }
-        }
-
-        vector<char> stack;
-        vector<string> palindromic;
-
-        for (auto it = subString.begin(); it != subString.end(); ++it)
-        {
-            auto left=(*it).begin();
-            auto right=(*it).end()-1;
-            while(left<right){
-                if(*left!=*right){
-                    break;
-                }
-                left++;
-                right--;
-            }
-            if(left>=right){
-                palindromic.push_back(*it);
-            }
-        }
+    string longestPalindrome(string s) {
+        int palindromicLen=0;
         int maxLen=0;
-        string* res;
-        for(auto it=palindromic.begin();it!=palindromic.end();++it){
-            if((*it).size()>maxLen){
-                maxLen=(*it).size();
-                res=&(*it);
+        int begin=0;
+
+        for(int i=0;i<s.length();++i){
+            palindromicLen=max(expendAroundCenter(s,i,i),expendAroundCenter(s,i,i+1));
+            if(palindromicLen>maxLen){
+                maxLen=palindromicLen;
+                begin=i-(maxLen-1)/2;
             }
         }
-        return *res;
+        return s.substr(begin,maxLen);
+    }
+
+
+    int expendAroundCenter(string s,int left ,int right){
+        int len=s.length();
+
+        int i=left;
+        int j=right;
+        while (i>=0 && j<len)
+        {
+            if(s[i]==s[j]){
+                i--;
+                j++;
+            }else{
+                break;
+            }
+        }
+        return j-i-1;    
     }
 };

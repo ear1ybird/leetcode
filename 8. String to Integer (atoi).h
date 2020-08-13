@@ -75,15 +75,17 @@ public:
                 break;
             }
             int pop = (int)str[i] - (int)'0';
-            if (positive == true)
+
+            if (res > INT_MAX / 10 || (res == INT_MAX / 10 && pop > 7))
             {
-                if (res > INT_MAX / 10 || (res == INT_MAX / 10 && pop > 7))
+                if (positive == true)
+                {
                     return INT_MAX;
-            }
-            if (positive == false)
-            {
-                if (res > -(INT_MIN / 10) || (-res == INT_MIN / 10 && pop > 7))
+                }
+                else
+                {
                     return INT_MIN;
+                }
             }
             res = res * 10 + pop;
         }

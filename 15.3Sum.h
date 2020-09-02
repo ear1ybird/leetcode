@@ -85,7 +85,7 @@ public:
     {
         vector<vector<int>> out;
 
-        if (nums.size() == 0)
+        if (nums.size() < 3)
         {
             return out;
         }
@@ -97,27 +97,30 @@ public:
             sort(nums);
             while (l < r)
             {
+                if (i == l || i == r)
+                {
+                    l++;
+                    continue;
+                }
                 if (nums[l] + nums[r] + nums[i] == 0)
                 {
                     vector<int> array;
-                    if (i != l && i != r)
-                    {
-                        array.push_back(nums[l]);
-                        array.push_back(nums[r]);
-                        array.push_back(nums[i]);
-                        sort(array);
-                        //if (check(array, out))
-                        ///{
-                            out.push_back(array);
-                        //}
-                    }
+                    array.push_back(nums[l]);
+                    array.push_back(nums[r]);
+                    array.push_back(nums[i]);
+                    sort(array);
+                    // if (check(array, out))
+                    // {
+                    //     out.push_back(array);
+                    // }
+                    out.push_back(array);
                     l++;
                 }
-                else if (nums[l] + nums[r] + nums[i] < 0)
+                while (nums[l] + nums[r] + nums[i] < 0 && l < r)
                 {
                     l++;
                 }
-                else if (nums[l] + nums[r] + nums[i] > 0)
+                while (nums[l] + nums[r] + nums[i] > 0 && l < r)
                 {
                     r--;
                 }

@@ -109,11 +109,10 @@ public:
                     array.push_back(nums[r]);
                     array.push_back(nums[i]);
                     sort(array);
-                    // if (check(array, out))
-                    // {
-                    //     out.push_back(array);
-                    // }
-                    out.push_back(array);
+                    if (check(array, out))
+                    {
+                        out.push_back(array);
+                    }
                     l++;
                 }
                 while (nums[l] + nums[r] + nums[i] < 0 && l < r)

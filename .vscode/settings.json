@@ -8,6 +8,7 @@
         "ostream": "cpp",
         "cmath": "cpp",
         "utility": "cpp",
-        "tuple": "cpp"
+        "tuple": "cpp",
+        "cstdlib": "cpp"
     }
 }

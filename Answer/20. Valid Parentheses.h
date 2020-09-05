@@ -12,6 +12,7 @@
 #include <string>
 #include <cmath>
 #include <unordered_map>
+#include <stack>
 using namespace std;
 
 class Solution
@@ -19,51 +20,35 @@ class Solution
 public:
     bool isValid(string s)
     {
-        string stack = "";
+        unordered_map<char, char> paris = {
+            {')', '('},
+            {'}', '{'},
+            {']', '['},
+        };
+
+        stack<char> stack;
         for (int i = 0; i < s.size(); i++)
         {
-            if (i == 0)
+            if (stack.empty())
             {
-                stack.push_back(s[i]);
+                stack.push(s[i]);
             }
-            else if (check(getStackBack(stack), s[i]))
+            else if (stack.top()==paris[s[i]])
             {
-                stack.pop_back();
-            }else{
-                stack.push_back(s[i]);
+                stack.pop();
+            }
+            else
+            {
+                stack.push(s[i]);
             }
         }
-        if(stack.empty()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    bool check(char a, char b)
-    {
-        if (a == '(' && b == ')')
-        {
-            return true;
-        }
-        else if (a == '{' && b == '}')
-        {
-            return true;
-        }
-        else if (a == '[' && b == ']')
+        if (stack.empty())
         {
             return true;
         }
         else
         {
             return false;
-        }
-    }
-    char getStackBack(string s){
-        if(s.empty()){
-            return 0;
-        }else{
-            return s.back();
         }
     }
 };

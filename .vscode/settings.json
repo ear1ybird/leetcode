@@ -9,6 +9,7 @@
         "cmath": "cpp",
         "utility": "cpp",
         "tuple": "cpp",
-        "cstdlib": "cpp"
+        "cstdlib": "cpp",
+        "string": "cpp"
     }
 }

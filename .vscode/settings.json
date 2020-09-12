@@ -10,6 +10,11 @@
         "utility": "cpp",
         "tuple": "cpp",
         "cstdlib": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "algorithm": "cpp",
+        "xutility": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "stack": "cpp"
     }
 }

@@ -15,8 +15,8 @@ int getArrayLen(T &array)
 
 int main(void)
 {
-    int s[] = {9, 8, 4, 5, 1, 2, 3};
-    quick_sort(s, 0, 6);
+    int s[] = {9, 8, 4, 5, 1, 2, 3,3};
+    quick_sort(s, 0, 7);
     cout<<getArrayLen(s);
     return 0;
 }
@@ -38,7 +38,7 @@ int AdjustArray(int s[], int l, int r)
             i++;
         }
 
-        while (i < j && s[i] < x)
+        while (i < j && s[i] <= x)
         {
             i++;
         }

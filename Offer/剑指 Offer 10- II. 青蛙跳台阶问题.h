@@ -2,7 +2,8 @@
     Copyright:ear1ybird
     Author:ear1ybird
     Date:2020-12-03
-    Description:写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项。
+    Description:一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个
+     n 级的台阶总共有多少种跳法
     Algorithm:
 **************************************************************************/
 
@@ -15,14 +16,12 @@ using namespace std;
 
 class Solution {
 public:
-    int fib(int n) {
-        int a=0,b=1,sum=0;
-        for(int i=0;i<n;i++){
-            sum=(a+b) %1000000007;
-            a=b;
-            b=sum;
-        }
+    int numWays(int n) {
+        vector<int> array={1,1,2};
 
-        return a;
+        for(int i=3;i<=n;i++){
+            array.push_back((array[i-1]+array[i-2])%1000000007);
+        }
+        return array[n];
     }
 };
